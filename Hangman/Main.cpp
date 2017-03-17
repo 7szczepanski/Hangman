@@ -1,10 +1,12 @@
 #include <SFML/Graphics.hpp>
-
+using namespace std;
+using namespace sf;
+int width = 400;
+int height = 400;
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::RenderWindow window(sf::VideoMode(width, height), "Hangman v1.0");
+
 
 	while (window.isOpen())
 	{
@@ -16,7 +18,6 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
 		window.display();
 	}
 
