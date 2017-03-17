@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
+#include "Riddle.h"
+#include "Underline.h"
 using namespace std;
 using namespace sf;
-int width = 400;
-int height = 400;
+int width = 800;
+int height = 300;
 /*
 Ok so what do we need?
 Some dictionary, then element of randomness?
@@ -15,10 +17,11 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "Hangman v1.0");
 	vector<string> dictionary;
-	string word1 = "kiercpe"; dictionary.push_back(word1);
+	string word1 = "koniczyna"; dictionary.push_back(word1);
 	string word2 = "acceleration"; dictionary.push_back(word2);
-
-
+	Riddle riddle;
+	riddle.callculateLenght(word1);
+	riddle.drawLines(width, height);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -27,8 +30,11 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-
 		window.clear();
+		
+		
+		riddle.drawAll(window);
+
 		window.display();
 	}
 
