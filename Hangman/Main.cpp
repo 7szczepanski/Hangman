@@ -3,8 +3,8 @@
 #include "Underline.h"
 using namespace std;
 using namespace sf;
-int width = 800;
-int height = 300;
+int width = 600;
+int height = 600;
 /*
 Ok so what do we need?
 Some dictionary, then element of randomness?
@@ -21,7 +21,11 @@ int main()
 	string word2 = "acceleration"; dictionary.push_back(word2);
 	Riddle riddle;
 	riddle.callculateLenght(word1);
+	riddle.prepare(width, height);
+	
 	riddle.drawLines(width, height);
+	//riddle.setPositions(200, 200);
+	
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -34,7 +38,7 @@ int main()
 		
 		
 		riddle.drawAll(window);
-
+		window.draw(riddle.rect);
 		window.display();
 	}
 
