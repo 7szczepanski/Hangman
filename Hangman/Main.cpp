@@ -4,7 +4,7 @@
 using namespace std;
 using namespace sf;
 int width = 600;
-int height = 600;
+int height = 200;
 /*
 Ok so what do we need?
 Some dictionary, then element of randomness?
@@ -16,8 +16,10 @@ pick word from dictionary, print(lines for each letter in word), show letter und
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "Hangman v1.0");
+	sf::RectangleShape background(Vector2f(width, height));
+	background.setFillColor(Color(51, 51, 51));
 	vector<string> dictionary;
-	string word1 = "koniczyna"; dictionary.push_back(word1);
+	string word1 = "mdwkaldwalkdlkawdadwdadwadwadawd"; dictionary.push_back(word1);
 	string word2 = "acceleration"; dictionary.push_back(word2);
 	Riddle riddle;
 	riddle.callculateLenght(word1);
@@ -35,7 +37,7 @@ int main()
 				window.close();
 		}
 		window.clear();
-		
+		window.draw(background);
 		
 		riddle.drawAll(window);
 		window.draw(riddle.rect);

@@ -29,15 +29,14 @@ void Riddle::drawLines(int width_, int height_) {
 	
 	for (int i = 0; i < numOfLetters; i++) {
 		cout << "Dlugosc: " << numOfLetters << endl;
+		float xsiz, ysiz;
+		xsiz = 20;// rect.getSize().x;
+		xsiz = 20; // xsiz / numOfLetters;
+		ysiz = 5;// rect.getSize().y - rect.getSize().y / 2;
 		Underline line;
-		line.setLines(width_, height_);
-		float curr;
-		curr = rect.getPosition().x + i * (rect.getSize().x/numOfLetters);
-		float offset;
-		offset = line.sprite.getSize().x;
-
-		line.setPosition(Vector2f(curr+offset,rect.getPosition().y+rect.getSize().y/2));
-		
+		line.setLines(xsiz, ysiz); // we are actualy seting size of each line based of numOfLetters
+		line.sprite.setOrigin(line.sprite.getSize().x / 2, line.sprite.getSize().y / 2);
+		line.setPosition(Vector2f((rect.getPosition().x/numOfLetters + i*(20+xsiz)), rect.getPosition().y));
 		lines.push_back(line);
 	}
 }
@@ -48,14 +47,11 @@ void Riddle::drawAll(RenderWindow &target_) {
 	}
 }
 void Riddle::prepare(int width_ ,int height_) {
-	Vector2f posn;
-	
-	posn.x = width_-numOfLetters*50;
-	posn.y = height_ / 4;
-	rect.setSize(posn);
-	rect.setPosition(Vector2f(width_/2-rect.getSize().x/2, height_/2-rect.getSize().y/2));
-	//rect.setOrigin(rect.getSize().x / 2, rect.getSize().y / 2);
-	rect.setFillColor(Color::Transparent);
+	rect.setSize(Vector2f(width_ - 50, height_ - height_/2));
+	rect.setOrigin(Vector2f(rect.getSize().x/2, rect.getSize().y/2));
+	rect.setPosition(Vector2f(width_/2, height_/2));
 	rect.setOutlineColor(Color::White);
-	rect.setOutlineThickness(2.f);
+	rect.setOutlineThickness(4.f);
+	rect.setFillColor(Color::Transparent);
+	
 }
